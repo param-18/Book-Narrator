@@ -89,6 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="prevClicked"
             app:srcCompat="@drawable/ic_baseline_skip_previous" />
 
         <ImageView
@@ -96,6 +97,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="ppClicked"
             app:srcCompat="@drawable/ic_baseline_pause" />
 
         <ImageView
@@ -103,6 +105,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:onClick="nextClicked"
             app:srcCompat="@drawable/ic_baseline_skip_next" />
     </LinearLayout>
 

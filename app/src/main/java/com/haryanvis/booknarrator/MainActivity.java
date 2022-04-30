@@ -4,19 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toolbar;
 
 import com.haryanvis.booknarrator.controller.HomeMainController;
+import com.haryanvis.booknarrator.controller.SectionMainController;
 import com.haryanvis.booknarrator.model.Book;
 import com.haryanvis.booknarrator.model.HomeSection;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView sectionsRV;
     private List<HomeSection> sections;
     private HomeMainController rvAdapter;
+    private List<Book> books;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,11 +48,11 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        Book ramNaamSatya = new Book(1,"Ram Naam Satya Hai","Devotional","Hindi","jbjhbhj",
+        Book ramNaamSatya = new Book(1,"Ram Naam Satya Hai","Devotional","Hindi","https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3",
                 90.67,6, "https://cdn.pixabay.com/photo/2021/03/29/10/33/rama-6133619_1280.png");
         Book mahakaal = new Book(2,"Mahakal","Devotional","Hindi","fgsgegfs",86.98,8,"https://cdn.pixabay.com/photo/2020/09/09/21/09/shiva-5558695_1280.png");
 
-        List<Book> books = new ArrayList<>();
+        books = new ArrayList<>();
 
         books.add(ramNaamSatya);
         books.add(mahakaal);
@@ -78,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         sections = new ArrayList<>();
         rvAdapter = new HomeMainController(sections);
     }
+
 
 
 }
