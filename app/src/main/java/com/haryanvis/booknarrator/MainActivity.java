@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Book ramNaamSatya = new Book(1,"Ram Naam Satya Hai","Devotional","Hindi","https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3",
-                90.67,6, "https://cdn.pixabay.com/photo/2021/03/29/10/33/rama-6133619_1280.png");
+                348.67,6, "https://cdn.pixabay.com/photo/2021/03/29/10/33/rama-6133619_1280.png");
         Book mahakaal = new Book(2,"Mahakal","Devotional","Hindi","fgsgegfs",86.98,8,"https://cdn.pixabay.com/photo/2020/09/09/21/09/shiva-5558695_1280.png");
 
         books = new ArrayList<>();

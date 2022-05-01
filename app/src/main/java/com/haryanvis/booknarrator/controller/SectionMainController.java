@@ -2,6 +2,8 @@ package com.haryanvis.booknarrator.controller;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +17,7 @@ import com.haryanvis.booknarrator.R;
 import com.haryanvis.booknarrator.model.Book;
 import com.haryanvis.booknarrator.view.ViewSectionMain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,12 +51,12 @@ public class SectionMainController extends RecyclerView.Adapter<ViewSectionMain>
             }
             holder.getCvBook().setOnClickListener(v -> {
                 Intent intent = new Intent(context , PlayerActivity.class);
-//                List<Book> sendingBooks = new ArrayList<>();
-//                sendingBooks.add(books.get(position));
-//                for(int i = 0 ; i < books.size() ; i++)
-//                    if(i != position)
-//                        sendingBooks.add(books.get(i));
-//                intent.putParcelableArrayListExtra("books" , (ArrayList) sendingBooks);
+                List<Book> sendingBooks = new ArrayList<>();
+                sendingBooks.add(books.get(position));
+                for(int i = 0 ; i < books.size() ; i++)
+                    if(i != position)
+                        sendingBooks.add(books.get(i));
+                PlayerActivity.playlist = sendingBooks;
                 context.startActivity(intent);
             });
         }
