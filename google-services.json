@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1015242082054",
+    "firebase_url": "https://book-narrator-e18f4-default-rtdb.firebaseio.com",
+    "project_id": "book-narrator-e18f4",
+    "storage_bucket": "book-narrator-e18f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015242082054:android:409cadcb47c2fdaa814087",
+        "android_client_info": {
+          "package_name": "com.haryanvis.booknarrator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015242082054-ue4bkl96tml90ho1pru53tvtlevdr2dv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArwba0MUyrL4A3p_Qe3PuUt1anLbZA4iM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015242082054-ue4bkl96tml90ho1pru53tvtlevdr2dv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
