@@ -1,5 +1,6 @@
 package com.haryanvis.booknarrator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,10 +11,14 @@ import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toolbar;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.FirebaseDatabase;
 import com.haryanvis.booknarrator.controller.HomeMainController;
 import com.haryanvis.booknarrator.controller.SectionMainController;
@@ -27,43 +32,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    
     private RecyclerView sectionsRV;
     private List<HomeSection> sections;
     private HomeMainController rvAdapter;
+    private FirebaseDatabase database;
     private List<Book> books;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
+        books =  new ArrayList<>();
+        database = FirebaseDatabase.getInstance();
+        database.getReference("/books").get().addOnSuccessListener(dataSnapshot -> {
+            for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                books.add(snapshot.getValue(Book.class));
+            }
+            addSections("New Titles",books);
+            refreshLayout();
+        }).addOnFailureListener(e -> {
+            Log.i("PARAMJEET",e.getMessage());
+        });
         initVars();
 
 
 
-        Book ramNaamSatya = new Book(1,"Ram Naam Satya Hai","Devotional","Hindi","https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3",
-                348.67,6, "https://cdn.pixabay.com/photo/2021/03/29/10/33/rama-6133619_1280.png");
-        Book mahakaal = new Book(2,"Mahakal","Devotional","Hindi","fgsgegfs",86.98,8,"https://cdn.pixabay.com/photo/2020/09/09/21/09/shiva-5558695_1280.png");
-
-        books = new ArrayList<>();
-
-        books.add(ramNaamSatya);
-        books.add(mahakaal);
-
-        addSections("New Titles",books);
 
         sectionsRV.setAdapter(rvAdapter);
         sectionsRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
+//        Book ramNaamSatya = new Book(1,"Ram Naam Satya Hai","Devotional","Hindi","https://www.learningcontainer.com/wp-content/uploads/2020/02/Kalimba.mp3",
+//                348.67,6, "https://cdn.pixabay.com/photo/2021/03/29/10/33/rama-6133619_1280.png");
+//        Book mahakaal = new Book(2,"Mahakal","Devotional","Hindi","fgsgegfs",86.98,8,"https://cdn.pixabay.com/photo/2020/09/09/21/09/shiva-5558695_1280.png");
+//
+//        books = new ArrayList<>();
+//
+//        books.add(ramNaamSatya);
+//        books.add(mahakaal);
 
-        refreshLayout();
+
     }
 
     //for Refresh the Layout
